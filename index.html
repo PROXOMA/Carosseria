@@ -4,38 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CAROSSERIA — samochodowe części blacharskie: drzwi, maski, błotniki, zderzaki i kratki.">
+  <meta name="theme-color" content="#090909">
+  <meta property="og:title" content="CAROSSERIA | Części blacharskie">
+  <meta property="og:description" content="Sprawdzone używane części blacharskie do samochodów. Wybierz markę, model i rocznik auta.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta name="geo.region" content="PL-LB">
+  <meta name="geo.placename" content="Przytoczna">
+  <meta name="geo.position" content="52.577;15.678">
+  <link rel="canonical" href="https://carosseria.pl/">
   <title>CAROSSERIA | Części blacharskie</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <a class="skip-link" href="#main-content">Przejdź do treści</a>
+  <header aria-label="Główna nawigacja">
     <a class="logo" href="#start">CAROSSERIA<span>.</span></a>
-    <nav>
+    <nav aria-label="Menu główne">
       <a href="#oferta">Oferta</a>
       <a href="#zakupy">Gdzie kupić</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="header-button" href="#kontakt">Kontakt ↓</a>
+    <a class="header-button" href="#kontakt" aria-label="Przejdź do formularza kontaktowego">Kontakt ↓</a>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero" id="start">
       <div class="hero-text">
         <p class="label">Części blacharskie do samochodów</p>
         <h1>Przywracamy<br>autu <em>formę.</em></h1>
         <p class="lead">Drzwi, maski, błotniki, zderzaki i kratki. Sprawdzone części, konkretna obsługa i pomoc w dobraniu właściwego elementu.</p>
         <div class="buttons">
-          <a class="button red" href="#oferta">Zobacz ofertę →</a>
+          <a class="button red" href="#zakupy">Zobacz ofertę →</a>
           <a class="button link" href="#kontakt">Odwiedź nas osobiście ↓</a>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <span class="hero-letter">C</span>
-        <p>CAR BODY PARTS<br>POLSKA</p>
-      </div>
+
     </section>
 
-    <section class="features">
+    <section class="features" aria-label="Najważniejsze informacje">
       <p><strong>Sprawdzone</strong><span>części używane</span></p>
       <p><strong>Dobór</strong><span>do modelu auta</span></p>
       <p><strong>Wygodne</strong><span>zakupy online</span></p>
@@ -49,8 +56,8 @@
         <p>Naszą aktualną ofertę znajdziesz na popularnych portalach motoryzacyjnych.</p>
       </div>
       <div class="shop-links">
-        <a class="allegro" href="https://allegro.pl" target="_blank" rel="noopener"><small>SKLEP INTERNETOWY ↗</small><strong>allegro</strong><span>Zobacz nasze aukcje</span></a>
-        <a class="ovoko" href="https://ovoko.pl" target="_blank" rel="noopener"><small>CZĘŚCI SAMOCHODOWE ↗</small><strong>OVOKO.PL</strong><span>Przejdź do oferty</span></a>
+        <a class="allegro" href="https://allegro.pl/uzytkownik/carosseria" target="_blank" rel="noopener noreferrer"><small>SKLEP INTERNETOWY ↗</small><strong>allegro</strong><span>Zobacz nasze aukcje</span></a>
+        <a class="ovoko" href="https://ovoko.pl/szukaj?sh=2227" target="_blank" rel="noopener noreferrer"><small>CZĘŚCI SAMOCHODOWE ↗</small><strong>OVOKO.PL</strong><span>Przejdź do oferty</span></a>
       </div>
     </section>
 
@@ -79,9 +86,9 @@
         <p>Każda część jest fotografowana, opisywana i oceniana przed wystawieniem w sprzedaży.</p>
       </div>
       <div class="gallery-grid">
-        <figure><img src="images/parts/part1.jpg" alt="Zielony błotnik samochodowy" loading="lazy"><figcaption><span>01</span> Element blacharski</figcaption></figure>
-        <figure><img src="images/parts/part2.jpg" alt="Niebieski błotnik samochodowy" loading="lazy"><figcaption><span>02</span> Element blacharski</figcaption></figure>
-        <figure><img src="images/parts/part3.jpg" alt="Czarny błotnik samochodowy" loading="lazy"><figcaption><span>03</span> Element blacharski</figcaption></figure>
+        <figure><img src="images/parts/part1.jpg" alt="Zielony błotnik samochodowy" width="1400" height="1400" loading="lazy"><figcaption><span>01</span> Element blacharski</figcaption></figure>
+        <figure><img src="images/parts/part2.jpg" alt="Niebieski błotnik samochodowy" width="1400" height="1400" loading="lazy"><figcaption><span>02</span> Element blacharski</figcaption></figure>
+        <figure><img src="images/parts/part3.jpg" alt="Czarny błotnik samochodowy" width="1400" height="1400" loading="lazy"><figcaption><span>03</span> Element blacharski</figcaption></figure>
       </div>
     </section>
 
@@ -89,10 +96,10 @@
       <div class="order-heading">
         <p class="label">Prosty zakup</p>
         <h2 id="order-title">Jak dobrać <em>część?</em></h2>
-        <p>Wyślij markę, model, rok produkcji oraz numer VIN. Pomożemy sprawdzić, czy wybrany element będzie pasował.</p>
+        <p>Wyślij markę, model, rok produkcji. Pomożemy sprawdzić, czy wybrany element będzie pasował.</p>
       </div>
       <ol class="steps">
-        <li><span>01</span><strong>Podaj dane samochodu</strong><p>Marka, model, rocznik i numer VIN.</p></li>
+        <li><span>01</span><strong>Podaj dane samochodu</strong><p>Marka, model, rocznik.</p></li>
         <li><span>02</span><strong>Potwierdzimy część</strong><p>Sprawdzimy wersję i zgodność elementu.</p></li>
         <li><span>03</span><strong>Wybierz odbiór</strong><p>Wysyłka kurierska lub odbiór osobisty.</p></li>
       </ol>
@@ -110,35 +117,69 @@
         <p>Zapytaj o dostępność części lub umów odbiór osobisty. Odpowiemy na podany adres e-mail.</p>
         <address>
           <strong>CAROSSERIA</strong>
-          <span>Przykładowy adres:<br>ul. Przemysłowa 12, 05-500 Piaseczno</span>
+          <span>Adres firmy:<br>Rokitno 113, 66-340 Przytoczna </span>
+          <a class="phone-link" href="tel:+48600000000">+48 600 000 000</a>
           <span><b>Godziny otwarcia</b><br>poniedziałek–sobota: 8:00–16:00</span>
           <a href="mailto:kontakt@carosseria.pl">kontakt@carosseria.pl</a>
         </address>
+        <a class="whatsapp-banner" href="https://wa.me/48600000000?text=Dzie%C5%84%20dobry%2C%20szukam%20cz%C4%99%C5%9Bci%20do%20samochodu." target="_blank" rel="noopener noreferrer" aria-label="Napisz do CAROSSERIA na WhatsApp">
+          <img src="images/baners/whatsapp-green.svg" alt="Napisz do nas na WhatsApp" width="1232" height="770" loading="lazy">
+        </a>
       </div>
 
       <form action="https://formsubmit.co/kontakt@carosseria.pl" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" autocomplete="email" placeholder="twoj@email.pl" required>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="twoj@email.pl" required aria-required="true">
         <label for="subject">Tytuł</label>
         <input id="subject" name="Tytuł" type="text" placeholder="Np. zapytanie o błotnik" required>
+
+        <div class="form-row">
+          <label for="brandSelect">Marka</label>
+          <select id="brandSelect" name="brand" required aria-required="true"></select>
+        </div>
+        <div class="form-row">
+          <label for="modelSelect">Model</label>
+          <select id="modelSelect" name="model" disabled required aria-required="true">
+            <option value="">Wybierz markę najpierw</option>
+          </select>
+        </div>
+        <div id="modelOther" class="model-other">
+          <label for="modelOtherInput">Wpisz model</label>
+          <input id="modelOtherInput" name="model_other" type="text" placeholder="Np. X60" />
+        </div>
+        <div class="form-row">
+          <label for="yearSelect">Rocznik</label>
+          <select id="yearSelect" name="year" required aria-required="true"></select>
+        </div>
+
+        <div id="vehicleDataNote" class="vehicle-note" aria-live="polite" style="color:#cfcfcf;font-size:12px;margin-bottom:12px"></div>
+
         <label for="message">Treść</label>
         <textarea id="message" name="Treść" rows="6" placeholder="Napisz, jakiej części szukasz..." required></textarea>
         <button type="submit">Wyślij wiadomość →</button>
       </form>
 
       <div class="map">
-        <iframe title="Przykładowa lokalizacja CAROSSERIA" src="https://www.google.com/maps?q=ul.%20Przemys%C5%82owa%2012%2C%20Piaseczno&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <div><span>PRZYKŁADOWA LOKALIZACJA</span><a href="https://www.google.com/maps/search/?api=1&query=ul.+Przemys%C5%82owa+12,+Piaseczno" target="_blank" rel="noopener">Wyznacz trasę ↗</a></div>
+        <iframe title="Mapa z lokalizacją CAROSSERIA w Rokitnie 113" src="https://www.google.com/maps?q=Rokitno%20113,%2066-340%20Przytoczna&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div><span>Rokitno 113, 66-340 Przytoczna</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Rokitno+113,+66-340+Przytoczna" target="_blank" rel="noopener noreferrer">Wyznacz trasę ↗</a></div>
       </div>
     </section>
   </main>
+
+  <script src="scripts/cars.js" defer></script>
+
+  <aside id="privacyNotice" class="privacy-notice" aria-label="Informacja o prywatności" hidden>
+    <p>Ta strona używa pamięci przeglądarki tylko do przyspieszenia ładowania bazy marek i modeli. Formularz wysyła podane dane do CAROSSERIA.</p>
+    <button id="privacyAccept" type="button">Rozumiem</button>
+  </aside>
 
   <footer>
     <a class="logo" href="#start">CAROSSERIA<span>.</span></a>
     <p>Części, które pasują. Obsługa, na której możesz polegać.</p>
     <span>© 2026 CAROSSERIA</span>
+    <div class="vehicle-credit">Vehicle data by <a href="https://vehiclesdb.com" target="_blank" rel="noopener noreferrer">VehiclesDB</a></div>
   </footer>
 </body>
 </html>
