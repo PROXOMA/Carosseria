@@ -195,17 +195,6 @@ function hideModelOther() {
   other.querySelector('input').required = false;
 }
 
-function initPrivacyNotice() {
-  const notice = document.getElementById('privacyNotice');
-  const accept = document.getElementById('privacyAccept');
-  if (!notice || !accept) return;
-  if (localStorage.getItem('carosseria-privacy-notice') !== 'accepted') notice.hidden = false;
-  accept.addEventListener('click', () => {
-    localStorage.setItem('carosseria-privacy-notice', 'accepted');
-    notice.hidden = true;
-  });
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
   // indicate loading state
   const brand = document.getElementById('brandSelect');
@@ -237,5 +226,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   modelEl.addEventListener('change', (e) => {
     if (e.target.value === 'Inny') showModelOther(); else hideModelOther();
   });
-  initPrivacyNotice();
 });

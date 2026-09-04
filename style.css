@@ -107,9 +107,6 @@ footer p,footer>span { color:var(--muted); }
 footer p { font-size:14px; } footer>span { font-size:10px; }
 .vehicle-credit { grid-column:1/-1; color:var(--muted); font-size:12px; margin-top:10px; }
 .vehicle-credit a { color:var(--red); font-weight:bold; }
-.privacy-notice { position:fixed; right:20px; bottom:20px; z-index:15; max-width:430px; padding:20px; display:flex; align-items:center; gap:20px; background:var(--panel); border:1px solid var(--line); box-shadow:0 10px 30px rgba(0,0,0,.35); }
-.privacy-notice p { margin:0; color:var(--muted); font-size:12px; line-height:1.5; }
-.privacy-notice button { flex:none; padding:12px 15px; border:0; background:var(--red); color:white; font-size:11px; font-weight:bold; cursor:pointer; text-transform:uppercase; }
 @media (max-width:850px) {
   header { height:auto; min-height:78px; grid-template-columns:1fr auto; padding-top:16px; padding-bottom:16px; }
   nav { grid-column:1/-1; justify-content:center; gap:20px; padding-top:16px; }
@@ -135,6 +132,4 @@ footer p { font-size:14px; } footer>span { font-size:10px; }
   .map>div { align-items:flex-start; flex-direction:column; }
   form { padding:28px 22px; }
   footer { grid-template-columns:1fr; gap:15px; }
-  .privacy-notice { right:12px; bottom:12px; left:12px; align-items:flex-start; gap:12px; }
-  .privacy-notice button { margin-top:2px; }
 }
