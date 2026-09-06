@@ -10,7 +10,7 @@ const FALLBACK_DB = {
 
 const VEHICLE_MAKES_URL = 'https://cdn.jsdelivr.net/gh/vehiclesdb/vehiclesdb@latest/catalog/car/makes.json';
 const VEHICLE_MODELS_URL = 'https://cdn.jsdelivr.net/gh/vehiclesdb/vehiclesdb@latest/catalog/car/models.json';
-const VEHICLE_CACHE_KEY = 'carosseria-vehiclesdb-v1';
+const VEHICLE_CACHE_KEY = 'carosseria-vehiclesdb-v2';
 const VEHICLE_CACHE_TTL = 24 * 60 * 60 * 1000;
 let VEHICLE_MAP = {}; // { makeName: [modelName,...] }
 let VEHICLE_MAKES = []; // original makes array
@@ -54,21 +54,14 @@ function buildMapFromObject(obj) {
 
 async function loadVehicleDB() {
   try {
-    const cached = JSON.parse(localStorage.getItem(VEHICLE_CACHE_KEY) || 'null');
-    if (cached && Date.now() - cached.timestamp < VEHICLE_CACHE_TTL && Array.isArray(cached.makes) && Array.isArray(cached.models)) {
-      VEHICLE_MAKES = cached.makes;
-      VEHICLE_MODELS = cached.models;
-      buildVehicleMap();
-      return;
-    }
-    // Load makes independently: a models request failure must not hide the full make list.
-    const makesRes = await fetch(VEHICLE_MAKES_URL);
+    // Always refresh the catalog; cached data is only used when the CDN is unavailable.
+    const makesRes = await fetch(VEHICLE_MAKES_URL, { cache: 'no-store' });
     if (!makesRes.ok) throw new Error(`Makes fetch failed: ${makesRes.status}`);
     const makes = await makesRes.json();
     VEHICLE_MAKES = Array.isArray(makes) ? makes : [];
 
     try {
-      const modelsRes = await fetch(VEHICLE_MODELS_URL);
+      const modelsRes = await fetch(VEHICLE_MODELS_URL, { cache: 'no-store' });
       if (modelsRes.ok) {
         const models = await modelsRes.json();
         VEHICLE_MODELS = Array.isArray(models) ? models : [];
