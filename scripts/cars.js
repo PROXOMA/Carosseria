@@ -61,20 +61,43 @@ async function loadVehicleDB() {
       buildVehicleMap();
       return;
     }
-    // fetch makes and models separately from catalog/car
-    const [makesRes, modelsRes] = await Promise.all([
-      fetch(VEHICLE_MAKES_URL),
-      fetch(VEHICLE_MODELS_URL)
-    ]);
-    if (!makesRes.ok || !modelsRes.ok) throw new Error('Fetch failed for makes/models');
+    // Load makes independently: a models request failure must not hide the full make list.
+    const makesRes = await fetch(VEHICLE_MAKES_URL);
+    if (!makesRes.ok) throw new Error(`Makes fetch failed: ${makesRes.status}`);
     const makes = await makesRes.json();
-    const models = await modelsRes.json();
     VEHICLE_MAKES = Array.isArray(makes) ? makes : [];
-    VEHICLE_MODELS = Array.isArray(models) ? models : [];
+
+    try {
+      const modelsRes = await fetch(VEHICLE_MODELS_URL);
+      if (modelsRes.ok) {
+        const models = await modelsRes.json();
+        VEHICLE_MODELS = Array.isArray(models) ? models : [];
+      }
+    } catch (modelsError) {
+      console.warn('vehicleDB models load failed; makes remain available', modelsError);
+      VEHICLE_MODELS = [];
+    }
+
+    if (!VEHICLE_MAKES.length) throw new Error('No car makes found');
 
     localStorage.setItem(VEHICLE_CACHE_KEY, JSON.stringify({ timestamp: Date.now(), makes: VEHICLE_MAKES, models: VEHICLE_MODELS }));
     buildVehicleMap();
   } catch (e) {
+    // Keep the last complete catalog when the CDN is temporarily unavailable.
+    try {
+      const saved = JSON.parse(localStorage.getItem(VEHICLE_CACHE_KEY) || 'null');
+      if (saved && Array.isArray(saved.makes) && saved.makes.length > Object.keys(FALLBACK_DB).length) {
+        VEHICLE_MAKES = saved.makes;
+        VEHICLE_MODELS = Array.isArray(saved.models) ? saved.models : [];
+        buildVehicleMap();
+        console.warn('vehicleDB load failed, using the last cached catalog', e);
+        const note = document.getElementById('vehicleDataNote');
+        if (note) note.textContent = 'Użyto ostatnio zapisanej bazy marek — zostanie odświeżona przy kolejnym połączeniu.';
+        return;
+      }
+    } catch (cacheError) {
+      console.warn('vehicleDB cached catalog unavailable', cacheError);
+    }
     VEHICLE_MAP = FALLBACK_DB;
     // build simple fallback makes/models arrays
     VEHICLE_MAKES = Object.keys(FALLBACK_DB).map((name, idx) => ({ id: idx + 1, name, slug: name.toLowerCase().replace(/\s+/g, '-') }));
