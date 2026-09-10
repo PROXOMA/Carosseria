@@ -10,8 +10,6 @@ const FALLBACK_DB = {
 
 const VEHICLE_MAKES_URL = 'https://cdn.jsdelivr.net/gh/vehiclesdb/vehiclesdb@latest/catalog/car/makes.json';
 const VEHICLE_MODELS_URL = 'https://cdn.jsdelivr.net/gh/vehiclesdb/vehiclesdb@latest/catalog/car/models.json';
-const VEHICLE_CACHE_KEY = 'carosseria-vehiclesdb-v2';
-const VEHICLE_CACHE_TTL = 24 * 60 * 60 * 1000;
 let VEHICLE_MAP = {}; // { makeName: [modelName,...] }
 let VEHICLE_MAKES = []; // original makes array
 let VEHICLE_MODELS = []; // original models array
@@ -73,24 +71,10 @@ async function loadVehicleDB() {
 
     if (!VEHICLE_MAKES.length) throw new Error('No car makes found');
 
-    localStorage.setItem(VEHICLE_CACHE_KEY, JSON.stringify({ timestamp: Date.now(), makes: VEHICLE_MAKES, models: VEHICLE_MODELS }));
     buildVehicleMap();
   } catch (e) {
-    // Keep the last complete catalog when the CDN is temporarily unavailable.
-    try {
-      const saved = JSON.parse(localStorage.getItem(VEHICLE_CACHE_KEY) || 'null');
-      if (saved && Array.isArray(saved.makes) && saved.makes.length > Object.keys(FALLBACK_DB).length) {
-        VEHICLE_MAKES = saved.makes;
-        VEHICLE_MODELS = Array.isArray(saved.models) ? saved.models : [];
-        buildVehicleMap();
-        console.warn('vehicleDB load failed, using the last cached catalog', e);
-        const note = document.getElementById('vehicleDataNote');
-        if (note) note.textContent = 'Użyto ostatnio zapisanej bazy marek — zostanie odświeżona przy kolejnym połączeniu.';
-        return;
-      }
-    } catch (cacheError) {
-      console.warn('vehicleDB cached catalog unavailable', cacheError);
-    }
+    // Clear catalogs saved by older versions and use only the bundled fallback.
+    localStorage.removeItem('carosseria-vehiclesdb-v2');
     VEHICLE_MAP = FALLBACK_DB;
     // build simple fallback makes/models arrays
     VEHICLE_MAKES = Object.keys(FALLBACK_DB).map((name, idx) => ({ id: idx + 1, name, slug: name.toLowerCase().replace(/\s+/g, '-') }));
@@ -212,6 +196,18 @@ function hideModelOther() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const header = document.querySelector('header');
+  const heroLogo = document.querySelector('.racing-banner-image');
+
+  if (header && heroLogo) {
+    const updateCompactHeader = () => {
+      header.classList.toggle('is-condensed', window.scrollY > heroLogo.offsetTop + heroLogo.offsetHeight);
+    };
+
+    window.addEventListener('scroll', updateCompactHeader, { passive: true });
+    updateCompactHeader();
+  }
+
   // indicate loading state
   const brand = document.getElementById('brandSelect');
   brand.innerHTML = '<option>Ładowanie marek…</option>';
