@@ -200,8 +200,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const heroLogo = document.querySelector('.racing-banner-image');
 
   if (header && heroLogo) {
+    const heroLogoBottom = heroLogo.offsetTop + heroLogo.offsetHeight;
     const updateCompactHeader = () => {
-      header.classList.toggle('is-condensed', window.scrollY > heroLogo.offsetTop + heroLogo.offsetHeight);
+      header.classList.toggle('is-condensed', window.scrollY > heroLogoBottom);
     };
 
     window.addEventListener('scroll', updateCompactHeader, { passive: true });
