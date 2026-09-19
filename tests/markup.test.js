@@ -27,6 +27,7 @@ test('every visible content block and relevant accessibility attribute is transl
   assert.match(html, /data-i18n="footer\.text"/);
   assert.match(html, /data-i18n-attr="alt:gallery\.alt1"/);
   assert.match(html, /data-i18n-attr="title:map\.title"/);
+  assert.match(html, /data-i18n-attr="aria-label:features\.aria"/);
 });
 
 test('language switcher disappears when the header passes the logo', () => {
