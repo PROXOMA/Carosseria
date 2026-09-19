@@ -32,3 +32,7 @@ test('every visible content block and relevant accessibility attribute is transl
 test('language switcher disappears when the header passes the logo', () => {
   assert.match(css, /header\.is-condensed\s+\.language-switcher\s*\{[^}]*display\s*:\s*none/);
 });
+
+test('language abbreviations use compact eight-pixel text without shrinking tap targets', () => {
+  assert.match(css, /\.language-switcher button\s*\{[^}]*min-width\s*:\s*34px[^}]*min-height\s*:\s*34px[^}]*font-size\s*:\s*8px/);
+});

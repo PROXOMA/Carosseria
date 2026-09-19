@@ -13,7 +13,7 @@ header { position:sticky; top:0; z-index:10; height:78px; padding:0 6vw; display
 nav { grid-column:2; display:flex; gap:32px; font-size:12px; font-weight:bold; text-transform:uppercase; transition:color .35s ease,top .35s ease; }
 nav a:hover { color:var(--red); }
 .language-switcher { grid-column:3; justify-self:end; display:flex; flex-wrap:wrap; justify-content:flex-end; gap:4px; }
-.language-switcher button { min-width:34px; min-height:34px; padding:6px; border:1px solid transparent; background:transparent; color:var(--muted); font-size:10px; font-weight:800; cursor:pointer; }
+.language-switcher button { min-width:34px; min-height:34px; padding:6px; border:1px solid transparent; background:transparent; color:var(--muted); font-size:8px; font-weight:800; cursor:pointer; }
 .language-switcher button:hover { color:var(--red); }
 .language-switcher button[aria-current="true"] { border-color:var(--red); background:var(--red); color:white; }
 header.is-condensed { height:120px; min-height:120px; padding:0 6vw; background:linear-gradient(to bottom,#0d4691 0 12px,#36b8e9 12px 24px,#0d4691 24px 36px,var(--red) 36px 84px,#0d4691 84px 96px,#36b8e9 96px 108px,#0d4691 108px 120px); }
