@@ -21,8 +21,7 @@ header.is-condensed nav { position:relative; top:-4px; animation: condensed-nav-
 header.is-condensed nav a { color:white; }
 header.is-condensed nav a { transition:color .35s ease,opacity .35s ease; }
 header.is-condensed nav a:hover { color:white; opacity:.72; }
-header.is-condensed .language-switcher button { color:white; }
-header.is-condensed .language-switcher button[aria-current="true"] { border-color:white; background:white; color:var(--red); }
+header.is-condensed .language-switcher { display:none; }
 header.is-condensed a:focus-visible { outline-color:white; }
 @keyframes condensed-nav-in {
   from { opacity:0; }
@@ -126,7 +125,7 @@ footer p { font-size:14px; } footer>span { font-size:10px; }
   header { height:auto; min-height:112px; grid-template-columns:1fr; gap:10px; padding-top:12px; padding-bottom:12px; }
   nav { grid-column:1; justify-content:center; gap:20px; }
   .language-switcher { grid-column:1; justify-self:stretch; justify-content:center; }
-  header.is-condensed { height:auto; min-height:132px; grid-template-rows:auto auto; }
+  header.is-condensed { height:120px; min-height:120px; grid-template-rows:auto; }
   .features { grid-template-columns:1fr 1fr; gap:25px 0; }
   .section-title,.gallery-heading,.shops,.contact { grid-template-columns:1fr; gap:45px; }
   .products { grid-template-columns:1fr 1fr; }

@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const html = fs.readFileSync('index.html', 'utf8');
+const css = fs.readFileSync('style.css', 'utf8');
 
 test('menu uses required order', () => {
   assert.ok(html.indexOf('href="#zakupy"') < html.indexOf('href="#oferta"'));
@@ -26,4 +27,8 @@ test('every visible content block and relevant accessibility attribute is transl
   assert.match(html, /data-i18n="footer\.text"/);
   assert.match(html, /data-i18n-attr="alt:gallery\.alt1"/);
   assert.match(html, /data-i18n-attr="title:map\.title"/);
+});
+
+test('language switcher disappears when the header passes the logo', () => {
+  assert.match(css, /header\.is-condensed\s+\.language-switcher\s*\{[^}]*display\s*:\s*none/);
 });
