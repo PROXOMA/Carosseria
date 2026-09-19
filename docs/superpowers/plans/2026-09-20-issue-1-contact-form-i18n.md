@@ -394,4 +394,3 @@ For each defect, first add the smallest failing assertion to the owning `tests/*
 git add index.html style.css scripts tests
 git commit -m "test: verify responsive multilingual contact flow"
 ```
-
